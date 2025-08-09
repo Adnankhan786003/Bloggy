@@ -7,6 +7,7 @@ import SingleBlog from './pages/SingleBlog';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import CreatePost from './pages/CreatePost';
+import 'jodit/es2021/jodit.min.css';
 
 
 
