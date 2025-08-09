@@ -72,6 +72,10 @@ html {
   background-color: var(--purple-700);
 }
 
+.btnNormal:disabled{
+  background-color: gray;
+}
+
 .btnWhite {
   padding: 10px;
   min-width: 130px;

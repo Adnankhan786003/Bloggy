@@ -40,13 +40,14 @@ const Signup = () => {
             navigate("/login")
         }catch (error) {
             console.log(error)
-
+            console.log(error.code)
+            
             if (error.code === 'auth/email-already-in-use') {
                 setError("Email is already in use")
             } else if (error.code === 'auth/invalid-email') {
-                setError("Invalid email address")
+                setError("Invalid Email")
             } else if (error.code === 'auth/weak-password') {
-                setError("Weak password, try something stronger")
+                setError("Weak password(Must include one a/A/1/symbol)")
             } else {
                 setError(error.message)
             }
@@ -96,7 +97,7 @@ const Signup = () => {
 
                         <p className='text-[14px] text-[gray] !mt-3 !mb-1'>Already Have an account <Link to="/login" className='text-purple-600'>Login</Link></p>
 
-                        <button className="btnNormal w-full">Sign Up</button>
+                        <button className="btnNormal w-full"> {loading ? "Signing Up..." : "Sign Up"}</button>
 
                     </div>
 
