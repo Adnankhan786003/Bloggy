@@ -11,27 +11,54 @@ const Signup = () => {
 
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
+    const [Error, setError] = useState("")
+    const [loading, setloading] = useState(false)
 
     let navigate = useNavigate()
 
     const submitForm = async (e) => {
         e.preventDefault()
 
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email)) {
+            setError("Please enter a valid email address")
+            return
+        }
+
+        if (pwd.length < 6) {
+            setError("Password must be at least 6 characters")
+            return
+        }
+
+        setloading(true)
+
         try {
             await createUserWithEmailAndPassword(auth, email, pwd)
-           
+
             console.log("user signed up")
             navigate("/login")
-
-
-        } catch (error) {
+        }catch (error) {
             console.log(error)
+
+            if (error.code === 'auth/email-already-in-use') {
+                setError("Email is already in use")
+            } else if (error.code === 'auth/invalid-email') {
+                setError("Invalid email address")
+            } else if (error.code === 'auth/weak-password') {
+                setError("Weak password, try something stronger")
+            } else {
+                setError(error.message)
+            }
+
         }
+
+        setloading(false)
     }
 
     const handleGoogleSignIn = async () => {
         provider.setCustomParameters({
-            prompt : "select_account"
+            prompt: "select_account"
         })
 
         try {
@@ -41,13 +68,16 @@ const Signup = () => {
             navigate("/")
 
         } catch (error) {
-            console.log("Google Sign-In error:", error.message);
+            console.log(error.code)
+            console.log(error.message);
         }
     };
 
     return (
         <>
             <div className="con flex flex-col justify-center items-center h-screen bg-[#070707]">
+
+                <h1 className='text-2xl !mb-5 font-bold'>Sign Up to Bloggy</h1>
 
                 <form onSubmit={submitForm} className='w-[26vw] min-h-[auto] bg-[#0f0e0e]  rounded-2xl !p-5 flex flex-col items-center '>
                     <img className='!-mt-3 w-[240px] object-cover h-[100px]' src={logo} alt="" />
@@ -69,6 +99,8 @@ const Signup = () => {
                         <button className="btnNormal w-full">Sign Up</button>
 
                     </div>
+
+                     {Error && <p className="text-red-600 text-sm ">{Error}</p>}
 
                 </form>
 

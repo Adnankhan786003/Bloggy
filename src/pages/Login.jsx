@@ -1,31 +1,33 @@
 import React, { useContext, useState } from 'react'
 import logo from '../images/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { provider,auth } from '../firebaseConfig'
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { provider, auth } from '../firebaseConfig'
+import { signInWithEmailAndPassword, signInWithPopup, validatePassword } from 'firebase/auth'
 
 
 
 
 const Login = () => {
-   
-     
+
     let navigate = useNavigate()
 
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
 
-
-
     const submitForm = async (e) => {
         e.preventDefault()
 
+        try {
+            await signInWithEmailAndPassword(auth, email, pwd)
 
-        await signInWithEmailAndPassword(auth,email,pwd)    
-        
-        console.log("user is signed in ")
-        navigate("/")
+            console.log("user is signed in ")
+            navigate("/")
+        } catch (error) {
 
+            console.log(error.code)
+            console.log(error.message)
+            
+        }
 
     }
 
@@ -44,8 +46,11 @@ const Login = () => {
     };
     return (
         <>
-        
+
             <div className="con flex flex-col justify-center items-center h-screen bg-[#070707]">
+
+                <h1 className='text-2xl !mb-5 font-bold'>Login to Bloggy</h1>
+                
 
                 <form onSubmit={submitForm} className='w-[26vw] min-h-[auto] bg-[#0f0e0e]  rounded-2xl !p-5 flex flex-col items-center '>
                     <img className='!-mt-3 w-[240px] object-cover h-[100px]' src={logo} alt="" />
@@ -63,16 +68,14 @@ const Login = () => {
 
                         <p className='text-[14px] text-[gray] !mt-3 !mb-1'>Don't Have an account <Link to="/signUp" className='text-purple-600'>Sign Up</Link></p>
 
-                    
+
                         <button className="btnNormal w-full">Login</button>
 
                     </div>
 
                 </form>
-
                 <h3 >or</h3>
                 <br />
-
                 <button className="flex items-center justify-center gap-3 w-[200px] !px-5 !py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-400 hover:bg-[white] " onClick={handleGoogleSignIn}>
                     <img
                         src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"

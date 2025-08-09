@@ -142,6 +142,7 @@ html {
   color: #fff;
 }
 
+/* create post */
 .createPostPage {
   width: 100%;
   height: calc(100vh - 70px);

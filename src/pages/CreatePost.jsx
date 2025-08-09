@@ -36,6 +36,7 @@ const CreatePost = ({ placeholder }) => {
   const navigate = useNavigate();
 
   const handleImageUpload = async (event) => {
+
     const file = event.target.files[0];
     if (!file) return;
 
@@ -107,7 +108,7 @@ const CreatePost = ({ placeholder }) => {
       <Navbar />
       <div className='createPostPage'>
         <div className="cpContainer">
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="error-message text-red-600 text-center text-2xl">{error}</p>}
           <div className="inputGp">
             <label>Title</label>
             <input
@@ -115,6 +116,17 @@ const CreatePost = ({ placeholder }) => {
               placeholder="BlogOne"
               value={Title}
               onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+
+          <div className="inputGp">
+            <label htmlFor="file-upload">Choose PNG or JPEG for posts</label>
+            <input
+              className="btnWhite !text-blue-600 cursor-pointer"
+              id="file-upload"
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleImageUpload}
             />
           </div>
 
@@ -130,23 +142,12 @@ const CreatePost = ({ placeholder }) => {
             />
           </div>
 
-          <div className="inputGp">
-            <label htmlFor="file-upload">Choose PNG or JPEG for posts</label>
-            <input
-              className="btnWhite !text-blue-600 cursor-pointer"
-              id="file-upload"
-              type="file"
-              accept="image/png, image/jpeg"
-              onChange={handleImageUpload}
-            />
-          </div>
-
           <button
             onClick={createPost}
             className="submitBtn"
             disabled={loading}
           >
-            {loading ? "Wait...": "Submit Post"}
+            {loading ? "Wait..." : "Submit Post"}
           </button>
         </div>
       </div>
