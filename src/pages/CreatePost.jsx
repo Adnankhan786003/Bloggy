@@ -76,7 +76,7 @@ const CreatePost = ({ placeholder }) => {
     const plainTextContent = content.replace(/<[^>]+>/g, '').trim();
 
     if (!Title.trim() || !plainTextContent || !imgUrl) {
-      return setError("Please fill in all fields and upload an image.");
+      return alert("All fields are required")
     }
 
 

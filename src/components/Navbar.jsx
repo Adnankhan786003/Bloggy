@@ -1,21 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import logo from '../images/logo.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from '../firebaseConfig';
+import { AuthContext } from '../context/AuthContext';
 import { signOut } from 'firebase/auth';
 
 
-
 const Navbar = () => {
+    
+    const user = useContext(AuthContext)
 
-  
+    let navigate = useNavigate()
 
     async function signUserOut() {
-        await signOut(auth).then(() => {
-            window.location.pathname = "/login"
-        })
+        try {
+            await signOut(auth);
+            console.log("user is Signed out")
+            navigate("/login")
+        } catch (error) {
+            console.log(error.code)   
+        }
     }
 
+   
+  
     return (
         <>
             <div className="navbar  !px-[100px] flex items-center h-[100px] bg-[#0c0c0c] justify-between overflow-hidden ">
@@ -27,11 +35,11 @@ const Navbar = () => {
                 <div className="links flex items-center gap-[20px]  ">
 
                     <Link className='navLink active' to="/">Home</Link>
-                    <Link className='navLink ' to="/createpost">Create</Link>
+                    {user &&  <Link className='navLink ' to="/createpost">Create</Link>}
+                    {user &&  <button onClick={signUserOut} className='btnNormal'>Logout</button>}
+                    {!user && <Link className='navLink' to="/login">Login</Link>}
 
-                    <Link className='navLink' to="/login">Login</Link>
-
-                    <button onClick={signUserOut} className='btnNormal'>Logout</button>
+                   
 
                 </div>
 

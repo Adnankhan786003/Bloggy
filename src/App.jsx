@@ -8,15 +8,16 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import CreatePost from './pages/CreatePost';
 import 'jodit/es2021/jodit.min.css';
+import { AuthProvider } from './context/AuthContext';
 
 
 
 const App = () => {
   return (
     <div >
-      <BrowserRouter>
+     <AuthProvider>
+       <BrowserRouter>
       
-
           <Routes>
 
             <Route path='/' element={<Home />} />
@@ -30,6 +31,7 @@ const App = () => {
           </Routes>
     
       </BrowserRouter>
+     </AuthProvider>
     </div>
   )
 }
