@@ -1,12 +1,45 @@
-# React + Vite
+# 📖 Bloggy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Bloggy** is a *basic blog application* built with **React** and **Firebase**.  
+It lets users **sign up**, **log in**, and **create blog posts** using the **Jodit Rich Text Editor**.  
+Posts are saved in **Firestore** and displayed inside the app.
 
-Currently, two official plugins are available:
+⚠️ **Note:** Bloggy is still under development — it is *not mobile responsive* yet, and **editing posts does not update them in real time**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Current Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 **User Authentication**  
+  Sign up, log in, and log out using Firebase Authentication.
+
+- ✏️ **Rich Text Blog Post Creation**  
+  Write and format posts with the **Jodit Editor**.
+
+- 📂 **Post Listing**  
+  View all saved posts.
+
+- 🖼️ **Image Support**  
+  Insert images into posts via Cloudinary.
+
+---
+
+## 🚧 Planned Features
+
+- ♻️ **Post Editing with Live Updates**  
+  Update existing posts and see changes instantly.
+
+- 📱 **Responsive Design**  
+  Mobile and tablet friendly layout.
+
+- 🗑️ **Post Deletion**  
+  Remove unwanted posts.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, React Router  
+- **Text Editor:** Jodit Editor  
+- **Backend:** Firebase Authentication, Firebase Firestore, Cloudinary
+- **Version Control:** Git + GitHub
