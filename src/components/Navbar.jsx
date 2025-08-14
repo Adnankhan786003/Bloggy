@@ -16,7 +16,7 @@ const Navbar = () => {
         try {
             await signOut(auth);
             console.log("user is Signed out")
-            navigate("/login")
+            // navigate("/login")
         } catch (error) {
             console.log(error.code)   
         }

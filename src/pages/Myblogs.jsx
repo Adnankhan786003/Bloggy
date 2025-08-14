@@ -5,6 +5,8 @@ import HTMLReactParser from 'html-react-parser/lib/index'
 import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore'
 import { db } from '../firebaseConfig'
 import { AuthContext } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
+
 
 const Myblogs = () => {
     const [isloading, setisloading] = useState(false)
@@ -77,8 +79,9 @@ const Myblogs = () => {
 
                                         <div className='text-[gray] text-[14px] w-[90%] line-clamp-3 !my-1 overflow-ellipsis'>{HTMLReactParser(post.content)}</div>
 
-                                        <div className="btn" style={{ position: "absolute", bottom: 0 }}>
+                                        <div className="btn flex gap-2 w-[80%] justify-center" style={{ position: "absolute", bottom: 0 }}>
                                             <button className='bg-white text-black !p-0.5 rounded w-[70px] ' onClick={() => deletepost(post.id)} >Delete</button>
+                                            <Link to ={`/blog/${post.id}`} className='bg-white text-black !p-0.5 rounded w-[70px] text-center' >View</Link>
                                         </div>
                                     </div>
 

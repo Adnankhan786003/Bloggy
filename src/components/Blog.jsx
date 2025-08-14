@@ -49,7 +49,7 @@ const Blog = () => {
                                 {HTMLReactParser(post.content)}
                             </div>
                             
-                            <h2>{post.createdAt.toDate().toDateString()}</h2>
+                            <h2 className='!mt-1'>{post.createdAt.toDate().toDateString()}</h2>
                         </div>
                     </Link>
                 )

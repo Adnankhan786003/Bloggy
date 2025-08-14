@@ -101,7 +101,7 @@ html {
 
 .blogsCon .blog {
   width: 300px;
-  height: 340px;
+  height: 350px;
   background-color: var(--bg-2);
   border-radius: 10px;
   transition: ease-in .3s;
@@ -118,7 +118,7 @@ html {
 
 .blog h2 {
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
 }
 
 
