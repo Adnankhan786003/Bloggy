@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import CreatePost from './pages/CreatePost';
 import 'jodit/es2021/jodit.min.css';
 import { AuthProvider } from './context/AuthContext';
+import Myblogs from './pages/Myblogs';
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/blog/:blogid' element={<SingleBlog />} />
             <Route path='/login' element={<Login />} />
             <Route path='/createPost' element={<CreatePost />}></Route>
+            <Route path='/myblogs' element={<Myblogs />}></Route>
 
             <Route path="*" element={<Nopage />} />
 

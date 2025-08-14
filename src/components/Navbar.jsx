@@ -36,6 +36,7 @@ const Navbar = () => {
 
                     <Link className='navLink active' to="/">Home</Link>
                     {user &&  <Link className='navLink ' to="/createpost">Create</Link>}
+                    {user &&  <Link className='navLink ' to="/myblogs">MyBlogs</Link>}
                     {user &&  <button onClick={signUserOut} className='btnNormal'>Logout</button>}
                     {!user && <Link className='navLink' to="/login">Login</Link>}
 

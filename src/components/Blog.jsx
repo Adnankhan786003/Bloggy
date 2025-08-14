@@ -21,6 +21,7 @@ const Blog = () => {
 
             setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
             setisloading(true)
+
         };
 
         getPosts();
@@ -41,9 +42,14 @@ const Blog = () => {
                     <Link to={`/blog/${post.id}`} key={post.id}>
                         <div className="blog overflow-hidden" >
                             <img className='w-full h-[60%] rounded-lg !mb-2' src={post.imgUrl} alt="BlogImg" />
-                            <h3>{post.Title}</h3>
-                            <div className='text-[gray] text-[14px] w-[90%] line-clamp-3 !my-1 overflow-ellipsis'>{HTMLReactParser(post.content)}</div>
-                            <h2 >@{post.author?.name || "Unknown author"}</h2>
+
+                            <h3 style={{ fontWeight: 'bold' }}>{post.Title}</h3>
+
+                            <div className='text-[gray] text-[14px] w-[90%] line-clamp-3 !my-1 overflow-hidden '>
+                                {HTMLReactParser(post.content)}
+                            </div>
+                            
+                            <h2>{post.createdAt.toDate().toDateString()}</h2>
                         </div>
                     </Link>
                 )
