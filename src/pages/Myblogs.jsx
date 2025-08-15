@@ -27,7 +27,7 @@ const Myblogs = () => {
             if (!user) return
 
             const postsCollectionRef = collection(db, "posts")
-            const orderedquery = query(postsCollectionRef, where("author.id", "==", user.uid))
+            const orderedquery = query(postsCollectionRef, where("author.id", "==", user.uid), orderBy("createdAt","desc"))
             const data = await getDocs(orderedquery);
 
             setmyblogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

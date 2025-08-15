@@ -22,15 +22,17 @@ const CreatePost = ({ placeholder }) => {
     toolbar: true,
     toolbarAdaptive: false,
     toolbarSticky: false,
+
     iframe: true,
     defaultActionOnPaste: 'insert_clear_html',
     askBeforePasteHTML: false,
     pasteHTMLActionList: ['insert_clear_html', 'insert_formatted', 'insert_as_text'],
     iframeStyle: `
       body { background-color: #000000; color: #ffffff; }
-      table, th, td { border-color: #555; }
+      table, th, td { border: 1px solid white ; }
       a { color: #4ea3ff; }
     `
+    
   }), [placeholder]);
 
   const navigate = useNavigate();
