@@ -26,7 +26,7 @@ const Navbar = () => {
   
     return (
         <>
-            <div className="navbar  !px-[100px] flex items-center h-[100px] bg-[#0c0c0c] justify-between overflow-hidden ">
+            <div className="navbar  !px-[100px] flex items-center h-[100px] justify-between overflow-hidden ">
 
                 <div className="logo">
                     <img className='w-[220px]' src={logo} alt="logo" />
@@ -37,10 +37,8 @@ const Navbar = () => {
                     <Link className='navLink active' to="/">Home</Link>
                     {user &&  <Link className='navLink ' to="/createpost">Create</Link>}
                     {user &&  <Link className='navLink ' to="/myblogs">MyBlogs</Link>}
-                    {user &&  <button onClick={signUserOut} className='btnNormal'>Logout</button>}
+                    {user &&  <button onClick={signUserOut} className='btnWhite'>Logout</button>}
                     {!user && <Link className='navLink' to="/login">Login</Link>}
-
-                   
 
                 </div>
 

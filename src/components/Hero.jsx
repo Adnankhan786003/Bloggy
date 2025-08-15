@@ -1,25 +1,29 @@
-import React,{useContext, useState,}from 'react'
+import React, { useContext, useEffect, useState, } from 'react'
 import heroimg from "../images/developer.gif"
 import { AuthContext } from '../context/AuthContext'
 
 const Hero = () => {
   const user = useContext(AuthContext)
   console.log(user)
-  
-  return (
-    <div className='hero flex items-center justify-between !px-[100px]  '  style={{height:"calc(100vh - 100px"}}>
 
-        <div className="left w-[50%]">
-            <h3 className='text-[60px]' style={{lineHeight:1}}>Unlock the secrets to  <span className='sp-text '>Masterful</span> Programming here</h3>
-            <div className="flex !mt-6 items-center gap-[15px]">
-                {user && <button className="btnNormal" >Welcome To Bloggy</button>}
-            </div>
-        
+
+  return (
+    <div className='hero flex items-center justify-between !px-[100px]  ' style={{ height: "calc(100vh - 100px)" }}>
+
+      <div className="left w-[50%]">
+        <h3 className='text-[60px]' style={{ lineHeight: 1 }}>Unlock the secrets to  <span className='sp-text '>Masterful</span> Programming here</h3>
+        <div className="flex !mt-6 items-center gap-[15px]">
+
+          {user && <button className="btnNormal" >Welcome To Bloggy </button>}
+          {user && <button className="btnWhite" >{user?.email.split('@')[0]}</button> }
+
         </div>
-        <div className="right w-[50%]">
-            <img className='rounded-[20px] w-full ' src={heroimg} alt="hero" />
-        </div>
-     
+
+      </div>
+      <div className="right w-[50%] ">
+        <img className='rounded-[20px] w-full' src={heroimg} alt="hero" />
+      </div>
+
     </div>
   )
 }

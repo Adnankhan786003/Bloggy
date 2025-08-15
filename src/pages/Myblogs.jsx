@@ -7,7 +7,6 @@ import { db } from '../firebaseConfig'
 import { AuthContext } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
 
-
 const Myblogs = () => {
     const [isloading, setisloading] = useState(false)
     const [myblogs, setmyblogs] = useState([])
@@ -19,8 +18,6 @@ const Myblogs = () => {
         setmyblogs(myblogs.filter((posts) => posts.id !== id))
 
     }
-
-
 
     useEffect(() => {
         const getPosts = async () => {
@@ -39,9 +36,6 @@ const Myblogs = () => {
         getPosts();
     }, [user]);
 
-
-
-
     if (!isloading) {
         return (
             <div className='flex justify-center items-center h-screen w-full'>
@@ -49,8 +43,6 @@ const Myblogs = () => {
             </div>
         )
     }
-
-
 
     return (
         <div>
@@ -72,7 +64,7 @@ const Myblogs = () => {
                                 return (
 
 
-                                    <div className="blog overflow-hidden " key={post.id} style={{ position: "relative" }}>
+                                    <div className="myblog overflow-hidden " key={post.id} style={{ position: "relative" }}>
                                         <img className='w-full h-[60%] rounded-lg !mb-2' src={post.imgUrl} alt="BlogImg" />
 
                                         <h3 style={{ fontWeight: 'bold' }}>{post.Title}</h3>
